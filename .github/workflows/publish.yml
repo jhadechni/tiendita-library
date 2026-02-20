@@ -1,0 +1,18 @@
+name: Publish to pub.dev
+
+on:
+  push:
+    tags:
+      # Must match the tag-pattern configured in pub.dev admin.
+      # tag-pattern on pub.dev: v{{version}}
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  publish:
+    permissions:
+      id-token: write
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    # with:
+    # Optional hardening with GitHub Environments.
+    # environment: pub.dev
+    # working-directory: .
